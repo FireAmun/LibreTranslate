@@ -21,7 +21,7 @@ RUN ./venv/bin/pip install Babel==2.12.1 && ./venv/bin/python scripts/compile_lo
   && ./venv/bin/pip cache purge
 
 FROM python:3.11.11-slim-bullseye
-
+s
 ARG with_models=false
 ARG models=""
 
@@ -43,5 +43,5 @@ RUN if [ "$with_models" = "true" ]; then  \
   fi
 
 EXPOSE 5000
-ENTRYPOINT [ "./venv/bin/libretranslate", "--host", "0.0.0.0", "--port", "${PORT}" ]
+ENTRYPOINT ["/bin/sh", "-c", "./venv/bin/libretranslate --host '*' --port ${PORT:-5000}"]
 
