@@ -21,7 +21,6 @@ RUN ./venv/bin/pip install Babel==2.12.1 && ./venv/bin/python scripts/compile_lo
   && ./venv/bin/pip cache purge
 
 FROM python:3.11.11-slim-bullseye
-s
 ARG with_models=false
 ARG models=""
 
